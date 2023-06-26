@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const file_show = require("./file_show.js");
+const { show_folder_elements } = require("./file_show.js");
 
 let mainWindow
 
@@ -52,8 +52,6 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-ipcMain.on("get-files-request", (evt) => {
-  const fls = file_show.show_folder_elements()
-  console.log(fls)
-  mainWindow.webContents.send("get-files-request", fls)
+ipcMain.handle("get-files-request", async () => {
+  return show_folder_elements()
 })
