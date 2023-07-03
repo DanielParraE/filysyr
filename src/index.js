@@ -55,3 +55,7 @@ app.on('activate', () => {
 ipcMain.handle("get-files-request", async () => {
   return show_folder_elements()
 })
+
+ipcMain.handle("get-files-from-desired-path", async (evt, desired_path) => {
+  return show_folder_elements(desired_path)
+})

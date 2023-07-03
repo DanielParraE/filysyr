@@ -1,15 +1,23 @@
 const ipcRenderer = require("electron").ipcRenderer
-let list_folder_contents = document.getElementById("list_folder_elements")
+let section_folder_elements = document.getElementById("section_folder_elements")
+let folder_name = document.getElementById("folder_name")
 
 const get_main_files = async () => {
     const res = await ipcRenderer.invoke('get-files-request')
-    show_files(res)
+    folder_name.innerHTML = res.current_path
+    show_files(res.formatted_elements)
+}
+
+const change_directory = async (desired_path) => {
+    const res = await ipcRenderer.invoke('get-files-from-desired-path', desired_path)
+    folder_name.innerHTML = res.current_path
+    show_files(res.formatted_elements)
 }
 
 const show_files = (fls) => {
-    list_folder_contents.innerHTML = ''
+    section_folder_elements.innerHTML = ''
     fls.forEach(fl => {
-        list_folder_contents.innerHTML += fl
+        section_folder_elements.innerHTML += fl
     });
 }
 
