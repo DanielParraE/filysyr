@@ -20,7 +20,7 @@ const show_folder_elements = (desired_path) => {
 
 const folder_elements_tamplate = (fl) => {
     if (fl.isDirectory) {
-        return `<p><a href="#" onClick="change_directory('${fl.full_path.replaceAll('\\', '\\\\')}')">${fl.name}</a></p>`
+        return `<p><a href="#" onclick="change_directory('${fl.full_path.replaceAll('\\', '\\\\')}')">${fl.name}</a></p>`
     }
     return `<p>${fl.name}|${fl.isDirectory ? '' : fl.size}|${fl.type}</p>`
 }

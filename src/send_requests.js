@@ -14,6 +14,20 @@ const change_directory = async (desired_path) => {
     show_files(res.formatted_elements)
 }
 
+const previous_directory = async () => {
+    if (folder_name.innerHTML === 'C:\\' || folder_name.innerHTML === 'C:') {
+        return
+    }
+    let folders = folder_name.innerHTML.split('\\')
+    folders.pop()
+    const result = folders.join('\\')
+    if (result === 'C:' || result === 'C:\\') {
+        await get_main_files()
+        return
+    }
+    await change_directory(result)
+}
+
 const show_files = (fls) => {
     section_folder_elements.innerHTML = ''
     fls.forEach(fl => {
