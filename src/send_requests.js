@@ -30,6 +30,7 @@ const previous_directory = async () => {
 
 const show_files = (fls) => {
     section_folder_elements.innerHTML = ''
+    section_folder_elements.innerHTML += `<section class="content-element file"><div>Name</div><div>Size</div><div>File Type</div></section>`
     fls.forEach(fl => {
         section_folder_elements.innerHTML += fl
     });

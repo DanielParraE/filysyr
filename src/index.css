@@ -2,6 +2,30 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
+  background-color: #303030;
   max-width: 38rem;
   padding: 2rem;
+}
+
+.content-element {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+}
+
+.content-element div {
+  flex: 1;
+}
+
+.content-element:hover {
+  background-color: gray;
+}
+
+a.folder-elements {
+  text-decoration: none;
+  color: white;
+}
+
+.file {
+  color: white;
 }

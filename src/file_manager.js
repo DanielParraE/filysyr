@@ -35,7 +35,6 @@ const current_path_files_with_stats = (fls, path_directory) => {
                 name: fl
             })
         } catch (error) {
-            console.error(error)
             continue
         }
     }
@@ -55,7 +54,6 @@ const initial_files_with_stats = (fls) => {
                 name: fl
             })
         } catch (error) {
-            console.error(error)
             continue
         }
     }
