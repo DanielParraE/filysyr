@@ -1,6 +1,7 @@
 const ipcRenderer = require("electron").ipcRenderer
 let section_folder_elements = document.getElementById("section_folder_elements")
 let folder_name = document.getElementById("folder_name")
+let previous_directory_button = document.getElementById("previous_directory_button")
 
 const get_main_files = async () => {
     const res = await ipcRenderer.invoke('get-files-request')
@@ -29,11 +30,13 @@ const previous_directory = async () => {
 }
 
 const show_files = (fls) => {
-    section_folder_elements.innerHTML = ''
-    section_folder_elements.innerHTML += `<section class="content-element file"><div>Name</div><div>Size</div><div>File Type</div></section>`
+    section_folder_elements.innerHTML = `<section class="content-element file"><div>Name</div><div>Size</div><div>File Type</div></section>`
     fls.forEach(fl => {
         section_folder_elements.innerHTML += fl
     });
 }
 
-window.onload = get_main_files
+window.onload = async () => {
+    await get_main_files()
+    previous_directory_button.onclick = previous_directory
+}

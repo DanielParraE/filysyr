@@ -7,8 +7,14 @@
     <script defer src="./send_requests.js"></script>
   </head>
   <body>
+    <section id="top_bar">
+      <button type="button" id="previous_directory_button"><img src="icons/up_arrow.png" alt="Image" id="previous_directory_icon"></button>
+      <section id="search">
+        <input type="text" placeholder="Search..." class="search_term">
+        <button type="submit" class="search_button"><img src="icons/search_icon.png" alt="Image" id="search_icon"></button>
+      </section>
+    </section>
     <h1 style="color: white;" id="folder_name"></h1>
     <section id="section_folder_elements"></section>
-    <p><a href="#" onclick="previous_directory()">Previous</a></p>
   </body>
 </html>
