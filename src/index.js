@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const { show_folder_elements } = require("./file_show.js");
+const { show_folder_elements, start_indexing } = require("./file_show.js");
 
 let mainWindow
 
@@ -26,6 +26,7 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+  start_indexing()
 };
 
 // This method will be called when Electron has finished
@@ -58,4 +59,8 @@ ipcMain.handle("get-files-request", async () => {
 
 ipcMain.handle("get-files-from-desired-path", async (evt, desired_path) => {
   return show_folder_elements(desired_path)
+})
+
+ipcMain.handle("start-index", async (evt) => {
+  await start_indexing()
 })

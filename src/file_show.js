@@ -1,4 +1,4 @@
-const { start_search, path_search } = require("./file_manager.js")
+const { start_search, path_search, index_files } = require("./file_manager.js")
 
 const show_folder_elements = (desired_path) => {
     let path_data
@@ -25,4 +25,8 @@ const folder_elements_tamplate = (fl) => {
     return `<section class="content-element file"><div>${fl.name}</div><div>${fl.size}</div><div>${fl.type}</div></section>`
 }
 
-module.exports = { show_folder_elements }
+const start_indexing = () => {
+    index_files()
+}
+
+module.exports = { show_folder_elements, start_indexing }
