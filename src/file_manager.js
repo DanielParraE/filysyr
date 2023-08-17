@@ -31,7 +31,7 @@ const index_files = async (path_to_search) => {
         path = os.homedir()
     }
     let data = ''
-    fs.readdirSync(homedir).forEach((fl) => {
+    fs.readdirSync(path).forEach((fl) => {
         try {
             file_stats = fs.statSync(`${path}\\${fl}`)
             if (file_stats.isDirectory()) {
