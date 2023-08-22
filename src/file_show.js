@@ -1,11 +1,11 @@
 const { start_search, path_search, index_files } = require("./file_manager.js")
 
-const show_folder_elements = (desired_path) => {
+const show_folder_elements = async (desired_path) => {
     let path_data
     if (typeof desired_path === 'undefined') {
-        path_data = start_search()
+        path_data = await start_search()
     } else {
-        path_data = path_search(desired_path)
+        path_data = await path_search(desired_path)
     }
     let result = []
     const fls = path_data.files_with_stats
@@ -25,8 +25,8 @@ const folder_elements_tamplate = (fl) => {
     return `<section class="content-element file"><div>${fl.name}</div><div>${fl.size}</div><div>${fl.type}</div></section>`
 }
 
-const start_indexing = () => {
-    index_files()
+const start_indexing = async () => {
+    await index_files()
 }
 
 module.exports = { show_folder_elements, start_indexing }

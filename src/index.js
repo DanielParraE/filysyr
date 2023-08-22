@@ -9,7 +9,7 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-const createWindow = () => {
+const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
@@ -26,7 +26,8 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
-  start_indexing()
+  // console.log(app.getPath('userData'))
+  // await start_indexing()
 };
 
 // This method will be called when Electron has finished
@@ -54,13 +55,9 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 ipcMain.handle("get-files-request", async () => {
-  return show_folder_elements()
+  return await show_folder_elements()
 })
 
 ipcMain.handle("get-files-from-desired-path", async (evt, desired_path) => {
-  return show_folder_elements(desired_path)
-})
-
-ipcMain.handle("start-index", async (evt) => {
-  await start_indexing()
+  return await show_folder_elements(desired_path)
 })
